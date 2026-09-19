@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Modern Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      color: #fff;
+    }
+    
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 25, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 20px 0;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: rgb(126, 223, 240);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background: rgb(126, 223, 240);
+      color: black;
+    }
+
+    .contact-section {
+      color: rgb(44, 220, 233);
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .contact-section h1 {
+      font-size: 36px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .form-container {
+      background-color: #0a0a19;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-top: 15px;
+      margin-bottom: 5px;
+      font-weight: 600;
+      color: white;
+    }
+
+    input, textarea {
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #30b7f5;
+    }
+
+    button[type="submit"] {
+      margin-top: 25px;
+      background: #30b7f5;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background: #1ca7e0;
+    }
+
+    @media (max-width: 768px) {
+      .contact-section {
+        padding: 40px 15px;
+      }
+
+      .form-container {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with sticky navbar -->
+  <header>
+    <div class="nav-container">
+      <h1 class="logo">Tiya<span>sha</span></h1>
+      <nav>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="contact-section">
+    <h1>Contact Me</h1>
+    <div class="form-container">
+      <form id="contactForm">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email">
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6"></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    function validateContactForm() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (name === '') {
+        alert('Name cannot be empty.');
+        return false;
+      }
+      if (!email.includes('@') || !email.includes('.')) {
+        alert('Please enter a valid email address.');
+        return false;
+      }
+      if (message.length < 20) {
+        alert('Message must be at least 20 characters long.');
+        return false;
+      }
+
+      return true;
+    }
+
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (validateContactForm()) {
+        alert('Form submitted successfully!');
+        this.reset();
+      }
+    });
+  </script>
+</body>
+</html>
